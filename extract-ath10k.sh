@@ -30,3 +30,7 @@ echo "  }" >>"${JSON}"
 echo "]" >>"${JSON}"
 
 python3 qca-swiss-army-knife/tools/scripts/ath10k/ath10k-bdencoder -c "${JSON}" -o board-2.bin
+python3 qca-swiss-army-knife/tools/scripts/ath10k/ath10k-fwencoder --create \
+                --features=wowlan,no-nwifi-decap-4addr-padding,allows-mesh-bcast,mgmt-tx-by-ref,non-bmi,single-chan-info-per-channel  \
+                --set-wmi-op-version=tlv --set-htt-op-version=tlv \
+                --set-fw-api=5
